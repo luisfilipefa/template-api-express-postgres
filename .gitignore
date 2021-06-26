@@ -1,0 +1,12 @@
+# node
+node_modules/
+
+# build
+dist/
+
+# env
+.env
+
+# db
+
+data/
