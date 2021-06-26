@@ -12,7 +12,7 @@
 - Docker: >20.10.7;
 - Docker-compose: >1.29.2;
 
-If you dont want to download and install Node, you can set it up a image using a Dockerfile and build it in the docker-compose file.
+If you dont want to download and install Node, you can set it up using a custom docker image and build it in the docker-compose file.
 
 **OBS**: If you decide to run the server as a docker container too, you can run into a few problems with folders permissions when using TypeORM cli.
 
