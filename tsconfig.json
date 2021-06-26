@@ -19,6 +19,7 @@
       "@repositories/*": ["./src/repositories/*"],
       "@errors/*": ["./src/errors/*"],
       "@interfaces/*": ["./src/interfaces/*"],
+      "@services/*": ["./src/services/*"]
     }
   }
 }
