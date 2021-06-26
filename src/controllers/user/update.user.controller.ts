@@ -7,8 +7,7 @@ export class UpdateUserController {
     try {
       const updateUserService = new UpdateUserService();
 
-      // TODO receber id da req
-      const { id } = req.params;
+      const { id } = req.user;
 
       const user = await updateUserService.execute(id, req.body);
 

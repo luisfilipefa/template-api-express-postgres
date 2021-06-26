@@ -1,3 +1,4 @@
+import { AuthenticationMiddleware } from "src/middlewares/authentication.middleware";
 import { DestroyUserController } from "@controllers/user/destroy.user.controller";
 import { IndexUserController } from "@controllers/user/index.user.controller";
 import { Route } from "@interfaces/route.interface";
@@ -9,6 +10,7 @@ import { UpdateUserController } from "@controllers/user/update.user.controller";
 export class UserRoutes implements Route {
   public path = "/user";
   public router = Router();
+  public authenticationMiddleware = new AuthenticationMiddleware();
   public storeUserController = new StoreUserController();
   public indexUserController = new IndexUserController();
   public showUserController = new ShowUserController();
@@ -19,7 +21,15 @@ export class UserRoutes implements Route {
     this.router.post(`${this.path}`, this.storeUserController.handle);
     this.router.get(`${this.path}`, this.indexUserController.handle);
     this.router.get(`${this.path}/:id`, this.showUserController.handle);
-    this.router.put(`${this.path}/:id`, this.updateUserController.handle);
-    this.router.delete(`${this.path}/:id`, this.destroyUsercontroller.handle);
+    this.router.put(
+      `${this.path}/:id`,
+      this.authenticationMiddleware.check,
+      this.updateUserController.handle
+    );
+    this.router.delete(
+      `${this.path}/:id`,
+      this.authenticationMiddleware.check,
+      this.destroyUsercontroller.handle
+    );
   }
 }

@@ -7,8 +7,7 @@ export class DestroyUserController {
     try {
       const destroyUserService = new DestroyUserService();
 
-      // TODO receber id da req
-      const { id } = req.params;
+      const { id } = req.user;
 
       const response = await destroyUserService.execute(id);
 

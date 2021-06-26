@@ -7,7 +7,6 @@ export class ShowUserController {
     try {
       const showUserService = new ShowUserService();
 
-      // TODO receber id da req
       const { id } = req.params;
 
       const user = await showUserService.execute(id);
