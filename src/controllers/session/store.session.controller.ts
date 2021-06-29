@@ -9,9 +9,12 @@ export class StoreSessionController {
 
       const { email, password } = req.body;
 
-      const token = await storeSessionService.execute({ email, password });
+      const { token, user } = await storeSessionService.execute({
+        email,
+        password,
+      });
 
-      return res.json(token);
+      return res.json({ token, user });
     } catch (error) {
       next(error);
     }
