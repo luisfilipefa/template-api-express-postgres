@@ -3,15 +3,15 @@ import { UserRepository } from "@repositories/user.repository";
 import { classToPlain } from "class-transformer";
 import { getCustomRepository } from "typeorm";
 
-interface ICreateUserParams {
+interface IStoreUserParams {
   name: string;
   avatar: string;
   email: string;
   password: string;
 }
 
-export class CreateUserService {
-  async execute({ name, avatar, email, password }: ICreateUserParams) {
+export class StoreUserService {
+  async execute({ name, avatar, email, password }: IStoreUserParams) {
     const userRepository = getCustomRepository(UserRepository);
 
     const userExists = await userRepository.findOne({ email });
